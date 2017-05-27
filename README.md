@@ -1,6 +1,6 @@
 # Swift Vim Test Host
 
-Swift Vim Test Host is a Sandbox to test out Vim functionality on real
+Swift Vim Test Host is a Playground to test out Swift Vim functionality on real
 projects.
 
 It includes 2 Applicaitons and Xcode projects
@@ -17,13 +17,13 @@ Pull Deps
     git submodule update --init
 ```
 
-Many interesting Swift tools need an XcodeCompilationDatabase
+Many semantic tools need a [CompilationDatabase](https://clang.llvm.org/docs/JSONCompilationDatabase.html)
 
-Setup XcodeCompilationDatabase on your `$PATH`
-
-Run `XcodeCompilationDatabase/install.sh` first. The example projects rely on
-`XCCompilationDB` being on your `$PATH`. The examples won't build unless this
-exists.
+Run `XcodeCompilationDatabase/install.sh` first. This installs
+[XcodeCompilationDatabase](https://github.com/jerrymarino/XcodeCompilationDatabase)
+to /usr/local/bin being on your `$PATH`. The examples won't build unless
+[XcodeCompilationDatabase](https://github.com/jerrymarino/XcodeCompilationDatabase)
+is on your path.
 
 ## YouCompleteMe Usage
 
