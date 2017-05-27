@@ -1,3 +1,7 @@
+
+compile_commands.json
+*.DS_Store
+
 ## Build generated
 build/
 DerivedData/
@@ -17,4 +21,3 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-*.DS_Store
