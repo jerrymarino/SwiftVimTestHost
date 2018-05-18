@@ -1,71 +1,52 @@
 # Swift Vim Test Host
 
-Swift Vim Test Host is a Playground to test out Swift Vim functionality on real
-projects.
+Swift Vim Test Host is a collection of examples to test out Swift Vim
+functionality on real projects.
 
-It includes 2 Applicaitons and Xcode projects
-- An OSX Application
-- An iOS Application
+It includes various Applicaitons and Build Systems
 
 Each project is already setup to build `compile_commands.json` after a build.
 
 ## Setup
 
+
 Pull Deps
 
 ```
-    git submodule update --init
+git submodule update --init
 ```
 
-Many semantic tools need a [CompilationDatabase](https://clang.llvm.org/docs/JSONCompilationDatabase.html)
+Vim code completion requires a [CompilationDatabase](https://clang.llvm.org/docs/JSONCompilationDatabase.html) which can be created from various build systems.
 
-Run `XcodeCompilationDatabase/install.sh` first. This installs
-[XcodeCompilationDatabase](https://github.com/jerrymarino/XcodeCompilationDatabase)
-to /usr/local/bin being on your `$PATH`. The examples won't build unless
-[XcodeCompilationDatabase](https://github.com/jerrymarino/XcodeCompilationDatabase)
-is on your path.
+## Swift Package Manger Vim Example
 
-## YouCompleteMe Usage
-
-It may be interesting to test out YouCompleteMe support.
-
-![SwiftySwiftVimYCMPreview](https://cloud.githubusercontent.com/assets/1245820/25786944/71ddaf52-3351-11e7-96d6-a32a714e35f6.gif)
-
-Install the [RFC branch of YCMD with Swift Support](https://github.com/Valloric/ycmd/pull/487)
-into your YouCompleteMe installation.
-
-For example, this means going into wherever you cloned YouCompleteMe and then:
+SwiftPM examples include [a basic command line program](BasicCLISwiftPM).
 
 ```
-  mv third_party/ycmd third_party/ycmd-master
-  git clone  https://github.com/jerrymarino/ycmd.git
-
-  # Checkout the RFC branch 
-  git checkout remotes/origin/jmarino_swift_prototype_squashed
-  git submodule update --init --recursive
-
-  # Build with Swift support
-  # ( Also, clang completer and potentially --debug-symbols )
-  ./build.py  --completers --swift-completer --clang-completer
+# Build and install to /usr/local/bin
+make -C SwiftCompilationDatabase install
 ```
 
-By default Vim does not support the `swift` filetype.
-
-Cat this into your `.vimrc`
+The Makefile is setup to create `compile_commands.json` as part of the build.
 
 ```
-    " Force swift filetype
-    autocmd BufNewFile,BufRead *.swift set filetype=swift
+make -C BasicCLISwiftPM
 ```
 
-Then, assert it's set to the correct value when a `swift` file is open.
+## Xcode Vim Examples
+
+Xcode examples include [a basic OSX application](BasicOSX) and [a basic iOS application](BasiciOS).
+
+First setup Xcode compilation database support via [XcodeCompilationDatabase](https://github.com/jerrymarino/XcodeCompilationDatabase).
 
 ```
-    :set ft?
+# Build and install to /usr/local/bin
+XcodeCompilationDatabase/install.sh
 ```
 
-## Command line Run and Debug
+The examples are setup to create `compile_commands.json` as part of the build.
 
-Run, or easily start debug sessions on an iOS simulator. See the shell script
-for this in the BasiciOS example tree.
+```
+xcodebuild -project BasiciOS/Basic.xcodeproj/ -sdk iphonesimulator -scheme Basic
+```
 

@@ -1,3 +1,6 @@
 [submodule "XcodeCompilationDatabase"]
 	path = XcodeCompilationDatabase
 	url = https://github.com/jerrymarino/XcodeCompilationDatabase
+[submodule "SwiftCompilationDatabase"]
+	path = SwiftCompilationDatabase
+	url = https://github.com/jerrymarino/SwiftCompilationDatabase
