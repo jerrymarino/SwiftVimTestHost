@@ -1,11 +1,11 @@
 # Swift Vim Test Host
 
 Swift Vim Test Host is a collection of examples to test out Swift Vim
-functionality on real projects.
+functionality on "real" projects.
 
-It includes various Applicaitons and Build Systems
-
-Each project is already setup to build `compile_commands.json` after a build.
+It includes various applications and build systems. Each project is already
+setup to build `compile_commands.json` after a build: simply, run `make` in a
+given example directory.
 
 ## Setup
 
@@ -30,14 +30,14 @@ make -C SwiftCompilationDatabase install
 The Makefile is setup to create `compile_commands.json` as part of the build.
 
 ```
-make -C BasicCLISwiftPM
+cd BasicCLISwiftPM && make
 ```
+
+Now, run Vim from the root of the example directory.
 
 ## Xcode Vim Examples
 
 Xcode examples include [a basic OSX application](BasicOSX) and [a basic iOS application](BasiciOS).
-
-First setup Xcode compilation database support via [XcodeCompilationDatabase](https://github.com/jerrymarino/XcodeCompilationDatabase).
 
 ```
 # Build and install to /usr/local/bin
@@ -47,6 +47,14 @@ XcodeCompilationDatabase/install.sh
 The examples are setup to create `compile_commands.json` as part of the build.
 
 ```
-xcodebuild -project BasiciOS/Basic.xcodeproj/ -sdk iphonesimulator -scheme Basic
+cd BasiciOS && make
 ```
 
+or
+
+```
+cd BasicOSX && make
+```
+
+Now, run Vim from the root of the example directory.
+ 

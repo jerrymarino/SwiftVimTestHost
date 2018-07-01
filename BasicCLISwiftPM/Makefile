@@ -7,3 +7,4 @@ all:
 		-Xswiftc "x86_64-apple-macosx10.9" \
 		-Xswiftc -parseable-output \
 		2>&1 | swift-compilation-database
+	cat compile_commands.json || exit 1
